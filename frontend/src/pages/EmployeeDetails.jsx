@@ -15,6 +15,12 @@ const getTenure = (joiningDateStr) => {
   const joiningDate = new Date(joiningDateStr);
   const today = new Date();
 
+  if (joiningDate > today) {
+    const diffTime = joiningDate - today;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return `Joins in ${diffDays} day${diffDays !== 1 ? "s" : ""}`;
+  }
+
   let years = today.getFullYear() - joiningDate.getFullYear();
   let months = today.getMonth() - joiningDate.getMonth();
   let days = today.getDate() - joiningDate.getDate();

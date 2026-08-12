@@ -55,8 +55,15 @@ const EmployeeForm = ({ initialData, onSubmit, submitLabel, errors }) => {
 
         <div>
           <label className="block text-sm font-medium mb-1">Email</label>
-          <input type="email" name="email" value={formData.email} onChange={handleChange} required
-            className={inputClass} style={{ "--tw-ring-color": "#92400e" }} />
+         <input
+  type="email"
+  name="email"
+  value={formData.email}
+  onChange={(e) => setFormData({ ...formData, email: e.target.value.toLowerCase() })}
+  required
+  className={inputClass}
+  style={{ "--tw-ring-color": "#92400e" }}
+/>
           {fieldError("email") && <p className="text-red-500 text-xs mt-1">{fieldError("email")}</p>}
         </div>
 

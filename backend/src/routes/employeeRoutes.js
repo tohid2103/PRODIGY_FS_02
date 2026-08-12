@@ -6,11 +6,14 @@ const {
   getEmployeeById,
   updateEmployee,
   deleteEmployee,
+  getEmployeesByYear,
 } = require("../controllers/employeeController");
 const { protect } = require("../middleware/auth");
 const { employeeValidationRules, handleValidationErrors } = require("../middleware/validate");
 
 router.use(protect);
+
+router.get("/by-year", getEmployeesByYear);
 
 router.route("/")
   .get(getEmployees)

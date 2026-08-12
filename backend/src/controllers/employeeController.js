@@ -107,10 +107,36 @@ const deleteEmployee = async (req, res) => {
   }
 };
 
+const getEmployeesByYear = async (req, res) => {
+  try {
+    const employees = await Employee.find().sort({ joiningDate: 1 });
+
+    const grouped = {};
+    employees.forEach((emp) => {
+      const year = new Date(emp.joiningDate).getFullYear();
+      if (!grouped[year]) grouped[year] = [];
+      grouped[year].push(emp);
+    });
+
+    const result = Object.keys(grouped)
+      .sort((a, b) => a - b)
+      .map((year) => ({
+        year: Number(year),
+        count: grouped[year].length,
+        employees: grouped[year],
+      }));
+
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+
 module.exports = {
   createEmployee,
   getEmployees,
   getEmployeeById,
   updateEmployee,
   deleteEmployee,
+  getEmployeesByYear,
 };

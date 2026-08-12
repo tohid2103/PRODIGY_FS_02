@@ -7,6 +7,7 @@ const menuItems = [
   { name: "Add Employee", path: "/employees/add" },
   { name: "Departments", path: "/departments" },
   { name: "Reports", path: "/reports" },
+  { name: "Yearly Hiring", path: "/yearly-hiring" },
   { name: "Profile", path: "/profile" },
   { name: "Settings", path: "/settings" },
 ];
@@ -56,13 +57,13 @@ const Sidebar = () => {
           ))}
         </nav>
       </div>
-     <button
-      onClick={handleLogout}
-      className="mx-4 mb-4 text-white text-sm font-semibold py-2 rounded-full text-center"
-      style={{ backgroundColor: "#92400e" }}
-    >
-     Logout
-    </button>
+      <button
+        onClick={handleLogout}
+        className="mx-6 mb-6 text-white text-sm font-semibold py-2 rounded-full text-center"
+        style={{ backgroundColor: "#92400e" }}
+      >
+        Logout
+      </button>
     </div>
   );
 };

@@ -124,14 +124,15 @@ const Employees = () => {
               <th className="px-4 py-3 cursor-pointer" onClick={() => handleSort("joiningDate")}>
                 Joining Date {sortIcon("joiningDate")}
               </th>
+              <th className="px-4 py-3">Status</th>
               <th className="px-4 py-3 text-right">Actions</th>
             </tr>
           </thead>
           <tbody>
             {loading ? (
-              <tr><td colSpan="6" className="px-4 py-6 text-center text-gray-500">Loading...</td></tr>
+              <tr><td colSpan="7" className="px-4 py-6 text-center text-gray-500">Loading...</td></tr>
             ) : employees.length === 0 ? (
-              <tr><td colSpan="6" className="px-4 py-6 text-center text-gray-500">No employees found</td></tr>
+              <tr><td colSpan="7" className="px-4 py-6 text-center text-gray-500">No employees found</td></tr>
             ) : (
               employees.map((emp) => (
                 <tr key={emp._id} className="border-t border-[#eddca0]">
@@ -140,6 +141,15 @@ const Employees = () => {
                   <td className="px-4 py-3 text-gray-500">{emp.designation}</td>
                   <td className="px-4 py-3">₹{emp.salary.toLocaleString()}</td>
                   <td className="px-4 py-3 text-gray-500">{formatDate(emp.joiningDate)}</td>
+                  <td className="px-4 py-3">
+                    <span
+                      className={`px-2.5 py-1 rounded-full text-xs font-medium ${
+                        emp.status === "Active" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
+                      }`}
+                    >
+                      {emp.status}
+                    </span>
+                  </td>
                   <td className="px-4 py-3">
                     <div className="flex justify-end items-center gap-3">
                       <button

@@ -12,6 +12,7 @@ import Departments from "./pages/Departments";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import Reports from "./pages/Reports";
+import YearlyHiring from "./pages/YearlyHiring";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
           <Route path="/reports" element={<ProtectedRoute><Reports /></ProtectedRoute>} />
+          <Route path="/yearly-hiring" element={<ProtectedRoute><YearlyHiring /></ProtectedRoute>} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
